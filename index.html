@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sample Form</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link href="custom.css">
+</head>
+
+<body class="container w-50 mt-5">
+    <form>
+        <div class="mb-3">
+            <label for="email" class="form-label">
+                Email address
+                <span class="text-danger">*</span>
+                <span id="err_email" class="text-danger"></span>
+            </label>
+            <input type="email" class="form-control required" id="email" data-type="email">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">
+                password
+                <span class="text-danger">*</span>
+                <span id="err_password" class="text-danger"></span>
+            </label>
+            <input type="password" class="form-control required" id="password" data-type="password">
+        </div>
+        <button type="button" class="btn btn-primary" id="submit">Submit</button>
+    </form>
+</body>
+
+<!-- Here You can replace file from CDN -->
+<script src="index.js"></script>
+
+<script>
+    $(document).ready(function () {
+
+        $(".required").on('focusout', function () {
+            onfocusout_validation($(this).attr('id'));
+        });
+
+        $(".required").on('input', function () {
+            oninput_validation($(this).attr('id'));
+        });
+
+        $(document).on('click', '#submit', function () {
+            nullfield_validation('email');
+            nullfield_validation('password');
+            if (objFlag.flag_email == 0 && objFlag.flag_password == 0) {
+                oninput_validation('email');
+                oninput_validation('password');
+                if (objFlag.flag_email == 0 && objFlag.flag_password == 0) {
+                    alert("success");
+                }
+                else {
+                    alert("Data is not proper");
+                }
+            }
+            else {
+                alert("error");
+            }
+        })
+    });
+
+</script>
+
+
+</html>

@@ -1,5 +1,5 @@
 var param1, param2, param3;
-var obj = {};
+var objFlag = {};
 function onfocusout_validation(x) {
     param1 = "#".concat(x);
     param2 = "#err_".concat($(param1).attr('id'));
@@ -9,8 +9,8 @@ function onfocusout_validation(x) {
         $(param1).removeClass('form-control-success');
         $(param1).addClass('form-control-danger');
         $(param2).text("Required");
-        obj[`${param3}`] = 1;
-        return obj;
+        objFlag[`${param3}`] = 1;
+        return objFlag;
     }
 }
 
@@ -49,15 +49,15 @@ function oninput_validation(x) {
         $(param1).removeClass('form-control-success');
         $(param1).addClass('form-control-danger');
         $(param2).text(obj[type].msg);
-        obj[`${param3}`] = 1;
-        return obj;
+        objFlag[`${param3}`] = 1;
+        return objFlag;
     }
     else {
         $(param1).removeClass('form-control-danger');
         $(param1).addClass('form-control-success');
         $(param2).text("");
-        obj[`${param3}`] = 0;
-        return obj;
+        objFlag[`${param3}`] = 0;
+        return objFlag;
     }
 }
 
@@ -70,14 +70,14 @@ function nullfield_validation(x) {
         $(param1).removeClass('form-control-success');
         $(param1).addClass('form-control-danger');
         $(param2).text("Required");
-        obj[`${param3}`] = 1;
-        return obj;
+        objFlag[`${param3}`] = 1;
+        return objFlag;
     }
     else {
         $(param1).removeClass('form-control-danger');
         $(param1).addClass('form-control-success');
         $(param2).text("");
-        obj[`${param3}`] = 0;
-        return obj;
+        objFlag[`${param3}`] = 0;
+        return objFlag;
     }
 }
