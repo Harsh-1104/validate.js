@@ -1,4 +1,4 @@
-const $ = require('jquery');
+// const $ = require('jquery');
 
 let param1, param2, param3;
 let objFlag = {};
